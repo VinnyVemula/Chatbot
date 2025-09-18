@@ -1,0 +1,12 @@
+streamlit
+PyPDF2
+tiktoken
+databricks-langchain
+langchain
+langchain-community
+langchain-core
+faiss-cpu
+numpy
+pandas
+datasets
+ragas
