@@ -13,6 +13,7 @@ def list_of_files(persist_dir,embeddings):
             file_name = doc.metadata.get("source") or doc.metadata.get("file_name") or "Unknown"
             file_set.add(file_name)
     file_list = list(file_set)
+    file_list.sort()
     file_list.insert(0, "all")
     return file_list
 def file_deletion(file_to_delete,persist_dir,embeddings):
