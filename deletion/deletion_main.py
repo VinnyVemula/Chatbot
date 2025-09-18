@@ -28,16 +28,16 @@ def delete(persist_dir: str, embeddings: str):
                 "File Names:",
                 deletion.list_of_files(persist_dir, embeddings)
             )
-            
-            if file_names:  # Only show messages if files are selected
-                with messages_container:
-                    if "all" in file_names:
-                        shutil.rmtree(persist_dir)
-                        st.info("Deleted all files")
-                    else: 
-                        for file_name in file_names:
-                            status = deletion.file_deletion(file_name, persist_dir, embeddings)
-                            st.info(status)
+            if st.button("Clear"):
+                if file_names:  # Only show messages if files are selected
+                    with messages_container:
+                        if "all" in file_names:
+                            shutil.rmtree(persist_dir)
+                            st.info("Deleted all files")
+                        else: 
+                            for file_name in file_names:
+                                status = deletion.file_deletion(file_name, persist_dir, embeddings)
+                                st.info(status)
         else:
             with messages_container:
                 st.info("No files found in directory")

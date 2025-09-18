@@ -14,7 +14,7 @@ def vector_store_search(query,persist_dir,embedding_model):
     questions in a lucid and simple way to remeber for long time.
     Use the following context to answer the question.
     If the question is some kind of greeting then respond and if the answer is not in the context,
-    say: "I don't have knowledge on this subject.
+    say: "I don't have knowledge on this subject." and return no sources that are present in the context.
     {context}
 
     Question: {question}
@@ -64,8 +64,8 @@ def chatbot(persist_dir,embedding_model):
                     result = response["result"]
                     source_doc = str([ source.metadata['source'] for source in response['source_documents']])
                     st.markdown(result)
-                    # if ("I don't have knowledge on the subject" not in result):
-                    #     st.markdown(f"Sources to refer: {source_doc}")
+                    if ("I don't have knowledge on the subject" not in result):
+                        st.markdown(f"Sources to refer: {source_doc}")
                         # st.balloons()
                     st.session_state.chat_history.append({"role": "assistant", "content": result})
                 else:
